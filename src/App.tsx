@@ -7,19 +7,21 @@ import Image from './image/Image';
 import InputBox from './inputbox/InputBox';
 import ResponseBox from './responsebox/ResponseBox';
 import './styles/global.css';
+import { Completion } from './types/privategptresponses';
 
 const App: React.FC = () => {
   const [imageCollapsed, setImageCollapsed] = useState(false);
-  const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const [response, setResponse] = useState<Completion | null>(null);
 
   const handleSend = async (inputText: string) => {
     setLoading(true);
 
     try {
-      const apiUrl = 'http://localhost:8000/v1/completions';
+      const apiUrl = 'http://localhost:8001/v1/completions';
 
-      const response = await axios.post(
+      const { data } = await axios.post<Completion>(
         apiUrl,
         {
           prompt: inputText,
@@ -32,12 +34,12 @@ const App: React.FC = () => {
         }
       );
 
-      setResponse(response.data);
+      setResponse(data);
+      setImageCollapsed(true);
     } catch (error) {
       console.error('Error:', error);
     } finally {
       setLoading(false);
-      setImageCollapsed(true); // Set imageCollapsed to true after processing the input
     }
   };
 
@@ -48,10 +50,7 @@ const App: React.FC = () => {
       {!imageCollapsed ? (
         <InputBox onSubmit={handleSend} loading={loading} />
       ) : (
-        <>
-          <InputBox onSubmit={handleSend} loading={loading} />
-          <ResponseBox response={response} />
-        </>
+        response && <ResponseBox response={response} />
       )}
     </div>
   );
