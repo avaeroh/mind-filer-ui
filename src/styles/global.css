@@ -115,9 +115,6 @@
   z-index: 1001;
 }
 
-.error-text {
-  /* Remove flex: 1; */
-}
 
 .close-button {
   background-color: transparent;
@@ -128,6 +125,5 @@
 
 .close-button span {
   display: block;
-  transform: rotate(45deg);
   line-height: 1;
 }
