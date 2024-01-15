@@ -8,11 +8,11 @@ interface ResponseBoxProps {
 }
 
 const ResponseBox: React.FC<ResponseBoxProps> = ({ response }) => {
-  const formattedContent = response?.choices[0]?.message?.content.replace(/\n/g, '<br>');
+  // const formattedContent = response?.choices[0]?.message?.content.replace(/\n/g, '<br>');
 
   return (
     <div className="response-box" style={{ whiteSpace: 'pre-line' }}>
-      {formattedContent}
+      {response?.choices[0]?.message?.content}
     </div>
   );
 };
