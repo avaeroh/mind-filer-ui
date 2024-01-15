@@ -1,14 +1,29 @@
 /* src/styles/global.css */
 
-.container {
+.header {
+  position: relative;
+  background: linear-gradient(to right, #3498db, #053cb2);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-size-adjust: auto;
+  flex: 0.05;
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  max-height: 10%;
+  min-height: 0;
+  z-index: 0;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .image {
   max-width: 100%;
-  min-height: 20%;
+  min-height: 30%;
+  background-color: #333; /* Dark grey background color */
+  color: #fff; /* White text color */
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -21,54 +36,48 @@
 .input-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: stretch;
-  min-width: 50%;
+  height: auto;
   padding: 10px;
   background-color: #f2f2f2;
-  flex: 1; /* Set flex to 1 to take up all available space */
-  z-index: 2; /* Ensure the input box is rendered above other elements */
+  flex: 1; 
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box; 
+  min-height: 5%;
+  max-height: 70%;
 }
 
-.input-box input {
-  flex: 1;
-  margin-bottom: 10px;
-  height: 100%;
+/* Adjust styles for larger viewports */
+@media screen and (min-width: 768px) {
+  .input-box {
+    max-height: none;  /* Remove max-height for larger viewports */
+  }
 }
 
 .response-box {
-  padding: 20px;
-  margin-top: 10px;
-  background-color: #e6f7ff;
-  border-radius: 8px;
+  padding: 5%;
+  padding-bottom: 15%;
+  background-color: #333;
+  color: #fff; 
+  min-height: 70%;
+  max-height: 70%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex: 0.45;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
-.response-box p {
-  color: #333;
-  font-size: 2.5vw; /* Set font size based on viewport width */
-}
-
-.header {
-  position: relative;
-  background: linear-gradient(to right, #3498db, #2353bb);
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  text-size-adjust: auto;
-  flex: 0.05;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-  font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Add a media query for smaller screens if needed */
+@media screen and (max-width: 768px) {
+  .response-box p {
+    font-size: 12px;
+  }
 }
 
 .loading-overlay {

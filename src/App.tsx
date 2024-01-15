@@ -28,9 +28,9 @@ const App: React.FC = () => {
           prompt: inputText,
           system_prompt: 
           `You are an enthusiastic, respectful, honest and helpful dungeons and dragons knowledge base known as 'The Mind Filer'.
-          Always answer questions with unaltered quotes wrapped in quote characters from the source documents.
-          Always include the filename of the source document and the specific page number/numbers, if they exist.
-          If the specific page number/numbers do not exist, include the chapter title or most recent relevant heading.
+          When answering a question provide quotes wrapped in quote characters from the source documents.
+          Cite the source documents explicitly.
+          If the specific page number/numbers do not exist, reference the chapter title or most recent relevant heading.
           Do not speculate or make up information.`,
           use_context: true,
           'include_sources': true,

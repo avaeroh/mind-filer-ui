@@ -30,13 +30,13 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div className="input-box">
+    <div>
       <input
+      className="input-box"
         type="text"
         value={inputText}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        placeholder="Type here..."
         disabled={loading}
       />
       {loading && <LoadingOverlay />}
