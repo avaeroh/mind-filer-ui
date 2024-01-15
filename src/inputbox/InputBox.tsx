@@ -1,6 +1,7 @@
 // src/components/InputBox.tsx
 
 import React, { useState } from 'react';
+import LoadingOverlay from '../loadingoverlay/LoadingOverlay';
 
 interface InputBoxProps {
   onSubmit: (inputText: string) => Promise<void>;
@@ -14,13 +15,17 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmit, loading }) => {
     setInputText(e.target.value);
   };
 
-  const handleKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleSubmit = async () => {
+    if (!loading && inputText.trim() !== '') {
+      await onSubmit(inputText);
+      setInputText('');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent the default behavior of the 'enter' key (form submission)
-      if (!loading && inputText.trim() !== '') {
-        await onSubmit(inputText);
-        setInputText('');
-      }
+      e.preventDefault();
+      handleSubmit();
     }
   };
 
@@ -34,6 +39,7 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmit, loading }) => {
         placeholder="Type here..."
         disabled={loading}
       />
+      {loading && <LoadingOverlay />}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 // ResponseBox.tsx
 
 import React from 'react';
-import './ResponseBox.css';
 import { Completion } from '../types/privategptresponses';
 
 interface ResponseBoxProps {

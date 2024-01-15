@@ -10,7 +10,7 @@ interface ImageProps {
 const Image: React.FC<ImageProps> = () => {
   return (
     <div className="image">
-      <img src={mindflayerImage} alt="Mindflayer" />
+      <img src={mindflayerImage} alt="Mindflayer" style={{ width: '100%', height: 'auto',  display: 'flex'}}/>
     </div>
   );
 };

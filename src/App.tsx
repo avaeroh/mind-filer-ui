@@ -12,7 +12,6 @@ import { Completion } from './types/privategptresponses';
 const App: React.FC = () => {
   const [imageCollapsed, setImageCollapsed] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [response, setResponse] = useState<Completion | null>(null);
 
   const handleSend = async (inputText: string) => {
@@ -46,12 +45,9 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <Header />
-      {!imageCollapsed && <Image />} {/* No need to pass imageUrl prop */}
-      {!imageCollapsed ? (
-        <InputBox onSubmit={handleSend} loading={loading} />
-      ) : (
-        response && <ResponseBox response={response} />
-      )}
+      {response && <ResponseBox response={response} />}
+      {!imageCollapsed && <Image />}
+      {<InputBox onSubmit={handleSend} loading={loading} />}
     </div>
   );
 };
