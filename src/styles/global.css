@@ -41,6 +41,9 @@
   margin-top: 10px;
   background-color: #d1f2eb;
   border-radius: 5px;
+  height: 100%;
+  max-height: 100%;
+  min-height: 50%;
   flex: 0.45;
   display: flex;
   flex-direction: column;
@@ -92,4 +95,39 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* src/components/ErrorNotification.css */
 
+/* src/components/ErrorNotification.css */
+
+.error-notification {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slide-up 0.5s ease-in-out;
+  z-index: 1001;
+}
+
+.error-text {
+  /* Remove flex: 1; */
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-button span {
+  display: block;
+  transform: rotate(45deg);
+  line-height: 1;
+}

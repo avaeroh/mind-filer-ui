@@ -6,6 +6,7 @@ import Header from './header/Header';
 import Image from './image/Image';
 import InputBox from './inputbox/InputBox';
 import ResponseBox from './responsebox/ResponseBox';
+import ErrorNotification from './errornotification/ErrorNotification';
 import './styles/global.css';
 import { Completion } from './types/privategptresponses';
 
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [imageCollapsed, setImageCollapsed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<Completion | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSend = async (inputText: string) => {
     setLoading(true);
@@ -35,17 +37,24 @@ const App: React.FC = () => {
 
       setResponse(data);
       setImageCollapsed(true);
+      setError(null);
     } catch (error) {
       console.error('Error:', error);
+      setError('There was an error reaching The Mindfiler.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const closeError = () => {
+    setError(null);
   };
 
   return (
     <div className="container">
       <Header />
       {response && <ResponseBox response={response} />}
+      {error && <ErrorNotification message={error} onClose={closeError} />}
       {!imageCollapsed && <Image />}
       {<InputBox onSubmit={handleSend} loading={loading} />}
     </div>
