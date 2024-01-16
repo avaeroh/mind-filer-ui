@@ -9,6 +9,7 @@ import ResponseBox from './responsebox/ResponseBox';
 import ErrorNotification from './errornotification/ErrorNotification';
 import './styles/global.css';
 import { Completion } from './types/privategptresponses';
+import getMindFilerRole from './prompts/MindFilerRole';
 
 const App: React.FC = () => {
   const [imageCollapsed, setImageCollapsed] = useState(false);
@@ -26,12 +27,7 @@ const App: React.FC = () => {
         apiUrl,
         {
           prompt: inputText,
-          system_prompt: 
-          `You are an enthusiastic, respectful, honest and helpful dungeons and dragons knowledge base known as 'The Mind Filer'.
-          When answering a question provide quotes wrapped in quote characters from the source documents.
-          Cite the source documents explicitly.
-          If the specific page number/numbers do not exist, reference the chapter title or most recent relevant heading.
-          Do not speculate or make up information.`,
+          system_prompt: getMindFilerRole(),
           use_context: true,
           'include_sources': true,
         },
@@ -64,9 +60,10 @@ const App: React.FC = () => {
       {response && <ResponseBox response={response} />}
       {error && <ErrorNotification message={error} onClose={closeError} />}
       {!imageCollapsed && <Image />}
-      {<InputBox onSubmit={handleSend} loading={loading} />}
+      <InputBox onSubmit={handleSend} loading={loading} />
     </div>
   );
 };
 
 export default App;
+
