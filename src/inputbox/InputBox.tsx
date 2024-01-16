@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import LoadingOverlay from '../loadingoverlay/LoadingOverlay';
+import '../styles/global.css'; 
 
 interface InputBoxProps {
   onSubmit: (inputText: string) => Promise<void>;
@@ -30,13 +31,13 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div>
+    <div  className="input-box">
       <input
-      className="input-box"
         type="text"
         value={inputText}
+        placeholder='Query The Mindfiler...'
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyPress}
         disabled={loading}
       />
       {loading && <LoadingOverlay />}

@@ -59,7 +59,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <Header />
       {response && <ResponseBox response={response} />}
       {error && <ErrorNotification message={error} onClose={closeError} />}

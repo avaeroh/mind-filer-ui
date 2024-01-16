@@ -21,15 +21,27 @@
 
 .image {
   max-width: 100%;
-  min-height: 30%;
-  background-color: #333; /* Dark grey background color */
-  color: #fff; /* White text color */
-  margin: 0 auto;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #333;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  flex-grow: 0;
+  overflow:hidden;
+  z-index: 1;
+}
+
+.response-box {
+  padding: 10px; 
+  padding-bottom: 10vh;
+  min-height: 80vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
   z-index: 1;
 }
 
@@ -37,47 +49,14 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  height: auto;
-  padding: 10px;
+  padding: 1px;
   background-color: #f2f2f2;
-  flex: 1; 
-  z-index: 2;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  box-sizing: border-box; 
-  min-height: 5%;
-  max-height: 70%;
-}
-
-/* Adjust styles for larger viewports */
-@media screen and (min-width: 768px) {
-  .input-box {
-    max-height: none;  /* Remove max-height for larger viewports */
-  }
-}
-
-.response-box {
-  padding: 5%;
-  padding-bottom: 15%;
-  background-color: #333;
-  color: #fff; 
-  min-height: 70%;
-  max-height: 70%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-}
-
-/* Add a media query for smaller screens if needed */
-@media screen and (max-width: 768px) {
-  .response-box p {
-    font-size: 12px;
-  }
+  z-index: 0;
 }
 
 .loading-overlay {
@@ -107,8 +86,6 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-/* src/components/ErrorNotification.css */
-
 /* src/components/ErrorNotification.css */
 
 .error-notification {
