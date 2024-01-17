@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/global.css';
-import mindflayerLogo from './mindflayer.jpg';
+import mindflayerLogo from './mind-filer-logo.webp';
 
 
 const Header: React.FC = () => {
