@@ -1,7 +1,7 @@
 // src/components/Image.tsx
 
 import React from 'react';
-import mindflayerImage from './mindflayer.jpg'; // Import the image
+import mindflayerImage from './mindflayer.webp'; // Import the image
 
 interface ImageProps {
   // Add any additional props you need
